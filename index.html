@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perspective | Abdirahman Omar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background-color: #ffffff; color: #000000;
+            font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .serif-text { font-family: 'Playfair Display', serif; }
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.03; pointer-events: none; z-index: 100;
+        }
+        .vertical-text { writing-mode: vertical-rl; text-orientation: mixed; }
+        .reveal {
+            opacity: 0; transform: translateY(15px);
+            animation: sharpReveal 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+        @keyframes sharpReveal { to { opacity: 1; transform: translateY(0); } }
+        
+        /* Audio Waveform Animation */
+        .bar { width: 1px; background: black; transition: height 0.2s ease; }
+        .playing .bar { animation: soundWave 0.6s infinite alternate; }
+        @keyframes soundWave { from { height: 2px; } to { height: 14px; } }
+
+        /* Sound Prompt Animation */
+        #sound-prompt { animation: pulseOpacity 3s infinite ease-in-out; }
+        @keyframes pulseOpacity { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+
+        #ancient-clock { font-variant-numeric: tabular-nums; letter-spacing: 0.2em; }
+    </style>
+</head>
+<body class="selection:bg-black selection:text-white">
+
+    <div class="grain"></div>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <aside class="fixed left-0 top-0 h-full w-14 md:w-24 border-r border-black/[0.05] flex flex-col justify-between items-center py-12 z-50 bg-white">
+        <span class="vertical-text text-[9px] tracking-[0.5em] uppercase font-bold transform rotate-180">Abdirahman Omar</span>
+        <div class="flex flex-col items-center space-y-4">
+            <span id="ancient-clock" class="vertical-text text-[10px] font-light opacity-60 rotate-180">00:00:00</span>
+            <span class="vertical-text text-[7px] tracking-[0.3em] uppercase opacity-20 rotate-180">Nairobi EAT</span>
+        </div>
+    </aside>
+
+    <aside class="fixed right-0 top-0 h-full w-14 md:w-24 border-l border-black/[0.05] flex flex-col justify-between items-center py-12 z-50 bg-white">
+        <button onclick="toggleMusic()" id="sound-btn" class="flex flex-col items-center space-y-4 group">
+            <div class="flex items-end space-x-[2px] h-4 mb-2">
+                <div class="bar h-2" style="animation-delay: 0s;"></div>
+                <div class="bar h-4" style="animation-delay: 0.2s;"></div>
+                <div class="bar h-1" style="animation-delay: 0.4s;"></div>
+            </div>
+            <span id="sound-status" class="vertical-text text-[9px] tracking-[0.4em] uppercase opacity-40 group-hover:opacity-100 transition-all">Sound: Off</span>
+        </button>
+        <a href="#library" class="vertical-text text-[9px] tracking-[0.4em] uppercase opacity-40 hover:opacity-100 transition-all">Library</a>
+    </aside>
+
+    <div id="sound-prompt-container" class="fixed top-12 right-20 md:right-32 z-40 reveal" style="animation-delay: 2s;">
+        <div id="sound-prompt" class="flex items-center space-x-4">
+            <span class="text-[8px] tracking-[0.6em] uppercase italic opacity-40">Kindly enable sound for the full atmosphere</span>
+            <div class="h-px w-8 bg-black/20"></div>
+        </div>
+    </div>
+
+   <main class="min-h-screen px-20 md:px-48 flex flex-col justify-center border-b border-black/[0.05]">
+        <div class="max-w-4xl w-full py-40">
+            <article class="space-y-24">
+                
+                <h1 class="reveal serif-text text-4xl md:text-7xl italic font-light leading-[1.1] max-w-2xl text-black/90">
+                    afterall, success is a perspective
+                </h1>
+
+                <div class="serif-text text-xl md:text-3xl leading-[1.7] text-black/85 tracking-tight font-light">
+                    <p class="reveal" style="animation-delay: 0.2s;">
+                        we seek for wins all throughout our lives,
+                        just to realize it's not what we really wanted.
+                        even with all the recognition and accolades,
+                        we would still want something else.
+                        the life we envisioned a few years ago,
+                        might already been different to what we need now.
+                        as we age, and wage war for so long,
+                        it dawned to us, we filter what we allow.
+                    </p>
+                    
+                    <p class="reveal mt-12 font-semibold italic" style="animation-delay: 0.4s;">
+                        you know what,
+                        sometimes we need is not success,
+                        but to know that,
+                        someone will be there if ever we fail—
+                        an assurance that even if the world be ending,
+                        someone will be there for us, more than willing.
+                    </p>
+                </div>
+
+                <div class="reveal text-right mt-16" style="animation-delay: 0.6s;">
+                    <p class="serif-text text-lg italic text-black/60">— ufoundvbdul</p>
+                </div>
+
+            </article>
+        </div>
+    </main>
+    <section id="library" class="min-h-screen px-6 md:px-48 py-40 bg-[#FAF9F6]">
+        <div class="max-w-4xl w-full space-y-16 mx-auto">
+            <header class="space-y-4 reveal">
+                <span class="text-[10px] tracking-[0.6em] uppercase opacity-30">Abdirahman Reads</span>
+                <h2 class="serif-text text-3xl md:text-5xl font-light italic text-black/90">Taj al-Arus: Refinement of the Soul</h2>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-5 space-y-8 reveal" style="animation-delay: 0.2s;">
+                    <p class="serif-text text-lg md:text-xl italic leading-relaxed opacity-70">
+                        "I advise anyone to read this at least once in their lifetime. It is a mirror for the heart and a guide for those seeking true perspective beyond the surface of life."
+                    </p>
+                    <div class="pt-8 flex flex-col space-y-6">
+                        <a href="book.pdf" target="_blank" class="text-[10px] tracking-[0.5em] uppercase font-bold border border-black px-6 py-4 hover:bg-black hover:text-white transition-all w-fit">
+                            Open Full PDF
+                        </a>
+                        <p class="text-[8px] tracking-[0.4em] uppercase opacity-30">Abdirahman Archive &bull; 2025</p>
+                    </div>
+                </div>
+                <div class="md:col-span-7 bg-white shadow-2xl border border-black/5 h-[500px] md:h-[650px] relative overflow-hidden reveal" style="animation-delay: 0.4s;">
+                    <iframe src="book.pdf" class="w-full h-full border-none"></iframe>
+                    <div class="absolute inset-0 pointer-events-none border-[12px] md:border-[20px] border-white/5"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const music = document.getElementById("bg-music");
+        const status = document.getElementById("sound-status");
+        const soundBtn = document.getElementById("sound-btn");
+        const prompt = document.getElementById("sound-prompt-container");
+
+        music.volume = 0.3; 
+
+        function toggleMusic() {
+            if (music.paused) {
+                music.play().then(() => {
+                    status.innerText = "Sound: On";
+                    soundBtn.classList.add('playing');
+                    prompt.style.display = 'none'; // Hide prompt once music starts
+                }).catch(error => { console.log("Playback failed:", error); });
+            } else {
+                music.pause();
+                status.innerText = "Sound: Off";
+                soundBtn.classList.remove('playing');
+            }
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-GB', { timeZone: 'Africa/Nairobi', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+            document.getElementById("ancient-clock").innerText = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+
+</html>

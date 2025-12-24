@@ -1,0 +1,11 @@
+:root {
+    --deep-green: #051410;
+    --aesthetic-green: #2D6A4F;
+    --cream: #F4F1EA;
+    --parchment: #f9f7f2;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
