@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         body { 
-            background-color: #00302e; /* Deep Green Aesthetic */
+            background-color: #00302e; 
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
@@ -26,10 +26,12 @@
         }
         @keyframes sharpReveal { to { opacity: 1; transform: translateY(0); } }
         
+        /* Audio visualizer bar animation */
         .bar { width: 1px; background: white; transition: height 0.2s ease; }
         .playing .bar { animation: soundWave 0.6s infinite alternate; }
         @keyframes soundWave { from { height: 2px; } to { height: 14px; } }
 
+        /* Custom scrollbar for deep green aesthetic */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #00302e; }
         ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
@@ -98,42 +100,34 @@
         </div>
     </main>
 
-    <section id="library" class="min-h-screen px-0 md:px-48 py-24 md:py-40 bg-white text-black">
-        <div class="max-w-6xl w-full space-y-12 md:space-y-16 mx-auto px-8 md:px-0">
-            
-            <header class="space-y-4 reveal px-2 md:px-0">
-                <span class="text-[10px] tracking-[0.6em] uppercase opacity-30">The Library</span>
-                <h2 class="serif-text text-3xl md:text-5xl font-light italic text-black/90">Taj al-Arus</h2>
-            </header>
+    <section id="library" class="min-h-screen bg-white text-black flex flex-col items-center">
+        <div class="w-full max-w-6xl p-10 md:p-20 space-y-4 text-center md:text-left">
+            <span class="text-[9px] tracking-[0.8em] uppercase opacity-30">Reading</span>
+            <h2 class="serif-text text-4xl md:text-6xl font-light italic leading-tight">Taj al-Arus: Refinement of the Soul</h2>
+            <div class="h-px w-12 bg-black/10 mx-auto md:mx-0 pt-4"></div>
+        </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div class="w-full bg-[#fdfdfd] border-t border-black/[0.03]">
+            <div class="max-w-6xl mx-auto shadow-2xl relative">
+                <iframe 
+                    src="book.pdf#view=FitH" 
+                    class="w-full h-[85vh] md:h-[100vh] border-none"
+                    title="Digital Manuscript Reader">
+                </iframe>
                 
-                <div class="lg:col-span-4 space-y-8 reveal px-2 md:px-0" style="animation-delay: 0.2s;">
-                    <p class="serif-text text-lg italic leading-relaxed opacity-70">
-                        "I advise anyone to read this at least once in their lifetime. It is a mirror for the heart."
-                    </p>
-                    <a href="book.pdf" target="_blank" class="block text-[10px] tracking-[0.5em] uppercase font-bold border border-black px-8 py-5 hover:bg-black hover:text-white transition-all text-center lg:text-left">
-                        Read Full Manuscript
+                <div class="absolute bottom-10 left-1/2 -translate-x-1/2 md:hidden">
+                    <a href="book.pdf" target="_blank" class="bg-black text-white text-[9px] tracking-[0.5em] uppercase px-8 py-4 shadow-xl">
+                        Open Fullscreen
                     </a>
                 </div>
-
-                <div class="lg:col-span-8 reveal" style="animation-delay: 0.4s;">
-                    <div class="shadow-2xl h-[70vh] md:h-[800px] w-full relative overflow-hidden bg-[#f4f4f4]">
-                        <iframe 
-                            src="book.pdf#view=FitH" 
-                            class="w-full h-full border-none absolute inset-0"
-                            style="min-height: 100%;">
-                        </iframe>
-                    </div>
-                </div>
-
             </div>
         </div>
-    </section>
 
-    <footer class="p-12 text-center text-[8px] tracking-[0.8em] uppercase opacity-20 text-white">
-        ufoundvbdul &bull; 2025
-    </footer>
+        <div class="py-20 text-center space-y-4">
+            <p class="serif-text text-sm italic opacity-40">"A mirror for the heart and a guide for perspective."</p>
+            <p class="text-[8px] tracking-[0.6em] uppercase opacity-20">ufoundvbdul &bull; Nairobi 2025</p>
+        </div>
+    </section>
 
     <script>
         const music = document.getElementById("bg-music");
